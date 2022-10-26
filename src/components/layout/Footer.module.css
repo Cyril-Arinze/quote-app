@@ -1,0 +1,10 @@
+.footer {
+  background-color: #008080;
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+}
+.footer p {
+  color: white;
+  font-size: x-small;
+}
