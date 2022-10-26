@@ -5,24 +5,6 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 import useHttp from "../hooks/use-http";
 import { getAllQuotes } from "../lib/api";
 
-const dummyQuote = [
-  {
-    id: "Q1",
-    author: "Cyril Arinze",
-    text: "Javascript go show you shege",
-  },
-  {
-    id: "Q2",
-    author: "Cyril Arinze",
-    text: "I repeat Javascript go show you shege",
-  },
-  {
-    id: "Q3",
-    author: "Cyril Arinze",
-    text: "Make i sha learn am, all die na die",
-  },
-];
-
 function AllQuotes() {
   const {
     sendRequest,
@@ -45,14 +27,14 @@ function AllQuotes() {
   if (status === "error") {
     return <div className="centered focused">{error}</div>;
   }
-  if (!loadedQuote) {
+  if (status === "completed" && !loadedQuote) {
     return (
       <div className="centered">
         <NoQuotesFound />
       </div>
     );
   }
-  return <QuoteList quotes={loadedQuote || []} />;
+  return <QuoteList quotes={loadedQuote} />;
 }
 
 export default AllQuotes;
